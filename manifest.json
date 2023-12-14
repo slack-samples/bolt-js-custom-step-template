@@ -1,10 +1,6 @@
 {
-    "_metadata": {
-        "major_version": 1,
-        "minor_version": 1
-    },
     "display_information": {
-        "name": "Bolt Template App"
+        "name": "BoltJS Automation Template"
     },
     "features": {
         "app_home": {
@@ -13,40 +9,20 @@
             "messages_tab_read_only_enabled": true
         },
         "bot_user": {
-            "display_name": "Bolt Template App",
+            "display_name": "BoltJS Automation Template",
             "always_online": false
-        },
-        "shortcuts": [
-            {
-                "name": "Run sample shortcut",
-                "type": "global",
-                "callback_id": "sample_shortcut_id",
-                "description": "Runs a sample shortcut"
-            }
-        ],
-        "slash_commands": [
-            {
-                "command": "/sample-command",
-                "description": "Runs a sample command",
-                "should_escape": false
-            }
-        ]
+        }
     },
     "oauth_config": {
         "scopes": {
             "bot": [
-                "channels:history",
-                "chat:write",
-                "commands"
+                "chat:write"
             ]
         }
     },
     "settings": {
         "event_subscriptions": {
-            "bot_events": [
-                "app_home_opened",
-                "message.channels"
-            ]
+            "bot_events": []
         },
         "interactivity": {
             "is_enabled": true
@@ -78,6 +54,5 @@
                 }
             }
         }
-    },
-    "outgoing_domains": []
+    }
 }
