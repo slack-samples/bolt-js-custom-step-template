@@ -12,7 +12,7 @@ const app = new App({
 });
 
 /** Sample Function Listener */
-app.function('sample_function', async ({ client, inputs, complete, fail }) => {
+app.function('sample_function', async ({ _client, inputs, complete, fail }) => {
   try {
     const { sample_input } = inputs;
 
