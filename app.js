@@ -9,10 +9,13 @@ const app = new App({
   socketMode: true,
   appToken: process.env.SLACK_APP_TOKEN,
   logLevel: LogLevel.DEBUG,
+  // To opt-out of using the JIT token to make `client` calls in
+  // function-related callbacks, set attachFunctionToken to false.
+  // attachFunctionToken: false,
 });
 
 /** Sample Function Listener */
-app.function('sample_function', async ({ client, inputs, complete, fail }) => {
+app.function('sample_function', async ({ inputs, complete, fail }) => {
   try {
     const { sample_input } = inputs;
 
@@ -20,7 +23,8 @@ app.function('sample_function', async ({ client, inputs, complete, fail }) => {
     complete({ outputs: { sample_output: sample_input } });
 
     // Option 2: Use interactivity (e.g. sending a button) to
-    // complete the function only after a user takes action
+    // complete the function only after a user takes action.
+    // To use, add `client` to the callback arguments above.
     // await client.chat.postMessage({
     //   channel: 'YOUR-CHANNEL-ID-HERE',
     //   blocks: [
