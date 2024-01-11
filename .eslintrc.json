@@ -12,7 +12,6 @@
     },
     "rules": {
         "object-curly-newline": "off",
-        "camelcase": "off",
-        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+        "camelcase": "off"
     }
 }
