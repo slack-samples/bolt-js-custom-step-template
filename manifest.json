@@ -5,7 +5,7 @@
     "features": {
         "app_home": {
             "home_tab_enabled": true,
-            "messages_tab_enabled": false,
+            "messages_tab_enabled": true,
             "messages_tab_read_only_enabled": true
         },
         "bot_user": {
@@ -33,26 +33,27 @@
     },
     "functions": {
         "sample_function": {
-            "title": "Sample function",
-            "description": "Runs sample function",
-            "input_parameters": {
-                "sample_input": {
-                    "type": "string",
-                    "title": "Sample input text",
-                    "description": "Sample input text to use in this step",
-                    "is_required": true,
-                    "name": "sample_input"
-                }
-            },
-            "output_parameters": {
-                "sample_output": {
-                    "type": "string",
-                    "title": "Sample output text",
-                    "description": "Sample output text to use in next step",
-                    "is_required": true,
-                    "name": "sample_output"
-                }
+          "title": "Sample function",
+          "description": "Runs sample function",
+          "input_parameters": {
+            "user_id": {
+              "type": "slack#/types/user_id",
+              "title": "User",
+              "description": "Message recipient",
+              "is_required": true,
+              "hint": "Select a user in the workspace",
+              "name": "user_id"
             }
+          },
+          "output_parameters": {
+            "user_id": {
+              "type": "slack#/types/user_id",
+              "title": "User",
+              "description": "User that completed the function",
+              "is_required": true,
+              "name": "user_id"
+            }
+          }
         }
     }
 }

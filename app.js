@@ -15,56 +15,51 @@ const app = new App({
 });
 
 /** Sample Function Listener */
-app.function('sample_function', async ({ inputs, complete, fail }) => {
+app.function('sample_function', async ({ client, inputs, fail }) => {
   try {
-    const { sample_input } = inputs;
+    const { user_id } = inputs;
 
-    // Option 1: Complete the function after business logic is run
-    complete({ outputs: { sample_output: sample_input } });
-
-    // Option 2: Use interactivity (e.g. sending a button) to
-    // complete the function only after a user takes action.
-    // To use, add `client` to the callback arguments above.
-    // await client.chat.postMessage({
-    //   channel: 'YOUR-CHANNEL-ID-HERE',
-    //   blocks: [
-    //     {
-    //       type: 'section',
-    //       text: {
-    //         type: 'mrkdwn',
-    //         text: 'Click the button to signal the function has completed!',
-    //       },
-    //       accessory: {
-    //         type: 'button',
-    //         text: {
-    //           type: 'plain_text',
-    //           text: 'Complete Function',
-    //         },
-    //         action_id: 'sample_button',
-    //       },
-    //     },
-    //   ],
-    // });
+    await client.chat.postMessage({
+      channel: user_id,
+      blocks: [
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: 'Click the button to signal the function has completed',
+          },
+          accessory: {
+            type: 'button',
+            text: {
+              type: 'plain_text',
+              text: 'Complete function',
+            },
+            action_id: 'sample_button',
+          },
+        },
+      ],
+    });
   } catch (error) {
     console.error(error);
-    fail({ error });
+    fail({ error: `Failed to handle a function request (error: ${error}` });
   }
 });
 
 /** Sample Action Listener */
-// For Option 2, commented out above
-app.action('sample_button', async ({ ack, context, complete, fail }) => {
-  await ack();
-
-  // If related to a function_executed event, the context contains
-  // information about the function execution the action is related to.
-  const { functionExecutionId } = context;
+app.action('sample_button', async ({ body, client, complete, fail }) => {
+  const { channel, message, interactivity: { interactor } } = body;
 
   try {
-    complete({ function_execution_id: functionExecutionId });
+    await complete({ outputs: { user_id: interactor.id } });
+
+    client.chat.update({
+      channel: channel.id,
+      ts: message.ts,
+      text: 'Function completed successfully!',
+    });
   } catch (error) {
     console.error(error);
-    fail({ error });
+    fail({ error: `Failed to handle a function request (error: ${error}` });
   }
 });
 
