@@ -46,7 +46,7 @@
                 "user_id": {
                     "type": "slack#/types/user_id",
                     "title": "User",
-                    "description": "User to used the function",
+                    "description": "User that completed the function",
                     "is_required": true,
                     "name": "user_id"
                 }
