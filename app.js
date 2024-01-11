@@ -9,9 +9,6 @@ const app = new App({
   socketMode: true,
   appToken: process.env.SLACK_APP_TOKEN,
   logLevel: LogLevel.DEBUG,
-  // To opt-out of using the JIT token to make `client` calls in
-  // function-related callbacks, set attachFunctionToken to false.
-  // attachFunctionToken: false,
 });
 
 /** Sample Function Listener */
@@ -41,7 +38,7 @@ app.function('sample_function', async ({ client, inputs, fail }) => {
     });
   } catch (error) {
     console.error(error);
-    fail({ error: `Failed to handle a function request (error: ${error}` });
+    fail({ error: `Failed to handle a function request: ${error}` });
   }
 });
 
@@ -50,16 +47,19 @@ app.action('sample_button', async ({ body, client, complete, fail }) => {
   const { channel, message, interactivity: { interactor } } = body;
 
   try {
+    // Functions should be marked as successfully completed using `complete` or
+    // as having failed using `fail`, else they'll remain in an 'In progress' state.
+    // Learn more at https://api.slack.com/automation/interactive-messages
     await complete({ outputs: { user_id: interactor.id } });
 
-    client.chat.update({
+    await client.chat.update({
       channel: channel.id,
       ts: message.ts,
       text: 'Function completed successfully!',
     });
   } catch (error) {
     console.error(error);
-    fail({ error: `Failed to handle a function request (error: ${error}` });
+    fail({ error: `Failed to handle a function request: ${error}` });
   }
 });
 

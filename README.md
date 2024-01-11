@@ -1,6 +1,6 @@
-# Bolt for JavaScript Automation Template App
+# Bolt for JavaScript Custom Function Template
 
-This is a generic Bolt for JavaScript template app intended to be used as a foundation upon which to build custom functions for use in Workflow Builder.
+This is a Bolt for JavaScript template app used to build custom functions in [Workflow Builder](https://api.slack.com/start#workflow-builder).
 
 ## Setup
 
@@ -37,7 +37,7 @@ name has the string `(local)` appended.
 # Run app locally
 $ slack run
 
-Connected, awaiting events
+⚡️ Bolt app is running! ⚡️
 ```
 
 To stop running locally, press `<CTRL> + C` to end the process.
@@ -49,12 +49,26 @@ Run ESLint for code formatting and linting:
 $ npm run lint
 ```
 
+## Using Functions in Workflow Builder
+With your server running, your function is now ready for use in [Workflow Builder](https://api.slack.com/start#workflow-builder)! Add it as a custom step in a new or existing workflow, then run the workflow while your app is running.
+
+For more information on creating workflows and adding custom steps, read more [here](https://slack.com/help/articles/17542172840595-Create-a-new-workflow-in-Slack).
+
 ## Project Structure
+
+### `.slack/`
+
+Contains `apps.dev.json` and `config.json`, which include installation details for your project.
+
+### `app.js`
+
+`app.js` is the entry point for the application and is the file you'll run to start the server. This project aims to keep this file as thin as possible, primarily using it as a way to route inbound requests.
 
 ### `manifest.json`
 
 `manifest.json` is a configuration for Slack apps. With a manifest, you can create an app with a pre-defined configuration, or adjust the configuration of an existing app.
 
-### `app.js`
+### `slack.json`
 
-`app.js` is the entry point for the application and is the file you'll run to start the server. This project aims to keep this file as thin as possible, primarily using it as a way to route inbound requests.
+Used by the Slack CLI to interact with the project's SDK dependencies. It contains
+script hooks that are executed by the CLI and implemented by `@slack/cli-hooks`.
