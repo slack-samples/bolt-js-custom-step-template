@@ -9,62 +9,57 @@ const app = new App({
   socketMode: true,
   appToken: process.env.SLACK_APP_TOKEN,
   logLevel: LogLevel.DEBUG,
-  // To opt-out of using the JIT token to make `client` calls in
-  // function-related callbacks, set attachFunctionToken to false.
-  // attachFunctionToken: false,
 });
 
 /** Sample Function Listener */
-app.function('sample_function', async ({ inputs, complete, fail }) => {
+app.function('sample_function', async ({ client, inputs, fail }) => {
   try {
-    const { sample_input } = inputs;
+    const { user_id } = inputs;
 
-    // Option 1: Complete the function after business logic is run
-    complete({ outputs: { sample_output: sample_input } });
-
-    // Option 2: Use interactivity (e.g. sending a button) to
-    // complete the function only after a user takes action.
-    // To use, add `client` to the callback arguments above.
-    // await client.chat.postMessage({
-    //   channel: 'YOUR-CHANNEL-ID-HERE',
-    //   blocks: [
-    //     {
-    //       type: 'section',
-    //       text: {
-    //         type: 'mrkdwn',
-    //         text: 'Click the button to signal the function has completed!',
-    //       },
-    //       accessory: {
-    //         type: 'button',
-    //         text: {
-    //           type: 'plain_text',
-    //           text: 'Complete Function',
-    //         },
-    //         action_id: 'sample_button',
-    //       },
-    //     },
-    //   ],
-    // });
+    await client.chat.postMessage({
+      channel: user_id,
+      blocks: [
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: 'Click the button to signal the function has completed',
+          },
+          accessory: {
+            type: 'button',
+            text: {
+              type: 'plain_text',
+              text: 'Complete function',
+            },
+            action_id: 'sample_button',
+          },
+        },
+      ],
+    });
   } catch (error) {
     console.error(error);
-    fail({ error });
+    fail({ error: `Failed to handle a function request: ${error}` });
   }
 });
 
 /** Sample Action Listener */
-// For Option 2, commented out above
-app.action('sample_button', async ({ ack, context, complete, fail }) => {
-  await ack();
-
-  // If related to a function_executed event, the context contains
-  // information about the function execution the action is related to.
-  const { functionExecutionId } = context;
+app.action('sample_button', async ({ body, client, complete, fail }) => {
+  const { channel, message, interactivity: { interactor } } = body;
 
   try {
-    complete({ function_execution_id: functionExecutionId });
+    // Functions should be marked as successfully completed using `complete` or
+    // as having failed using `fail`, else they'll remain in an 'In progress' state.
+    // Learn more at https://api.slack.com/automation/interactive-messages
+    await complete({ outputs: { user_id: interactor.id } });
+
+    await client.chat.update({
+      channel: channel.id,
+      ts: message.ts,
+      text: 'Function completed successfully!',
+    });
   } catch (error) {
     console.error(error);
-    fail({ error });
+    fail({ error: `Failed to handle a function request: ${error}` });
   }
 });
 
