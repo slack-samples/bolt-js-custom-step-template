@@ -1,6 +1,6 @@
 {
     "display_information": {
-        "name": "BoltJS Automation Template"
+        "name": "Bolt Custom Function Template"
     },
     "features": {
         "app_home": {
@@ -9,7 +9,7 @@
             "messages_tab_read_only_enabled": true
         },
         "bot_user": {
-            "display_name": "BoltJS Automation Template",
+            "display_name": "Bolt Custom Function Template",
             "always_online": false
         }
     },

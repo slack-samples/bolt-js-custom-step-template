@@ -18,6 +18,7 @@ app.function('sample_function', async ({ client, inputs, fail }) => {
 
     await client.chat.postMessage({
       channel: user_id,
+      text: 'Click the button to signal the function has completed',
       blocks: [
         {
           type: 'section',
@@ -44,13 +45,13 @@ app.function('sample_function', async ({ client, inputs, fail }) => {
 
 /** Sample Action Listener */
 app.action('sample_button', async ({ body, client, complete, fail }) => {
-  const { channel, message, interactivity: { interactor } } = body;
+  const { channel, message, user } = body;
 
   try {
     // Functions should be marked as successfully completed using `complete` or
     // as having failed using `fail`, else they'll remain in an 'In progress' state.
     // Learn more at https://api.slack.com/automation/interactive-messages
-    await complete({ outputs: { user_id: interactor.id } });
+    await complete({ outputs: { user_id: user.id } });
 
     await client.chat.update({
       channel: channel.id,

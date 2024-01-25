@@ -1,7 +1,7 @@
 {
-  "name": "bolt-js-automation-template",
+  "name": "bolt-js-custom-function-template",
   "version": "1.0.0",
-  "description": "A scaffold template for Slack apps",
+  "description": "A custom function template for Slack apps",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -16,10 +16,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/slackapi/bolt-js-template.git"
+    "url": "https://github.com/slackapi/bolt-js-custom-function-template.git"
   },
   "bugs": {
-    "url": "https://github.com/slackapi/bolt-js-template/issues"
+    "url": "https://github.com/slackapi/bolt-js-custom-function-template/issues"
   },
   "dependencies": {
     "@slack/bolt": "^3.17.0",
