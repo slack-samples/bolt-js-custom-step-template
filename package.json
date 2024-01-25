@@ -2,7 +2,7 @@
   "name": "bolt-js-automation-template",
   "version": "1.0.0",
   "description": "A scaffold template for Slack apps",
-  "main": "app/app.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "lint": "eslint --ext .js ."
