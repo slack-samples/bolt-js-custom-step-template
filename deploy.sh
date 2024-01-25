@@ -10,4 +10,4 @@ heroku config:set SLACK_BOT_TOKEN=$SLACK_BOT_TOKEN
 
 git push heroku main
 
-echo "Awesome sauce! You're all set!\n"
+echo "Awesome sauce! You're all set!"
