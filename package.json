@@ -22,11 +22,11 @@
     "url": "https://github.com/slackapi/bolt-js-custom-function-template/issues"
   },
   "dependencies": {
-    "@slack/bolt": "^3.17.0",
+    "@slack/bolt": "^3.17.1-customFunctionBeta.0",
     "dotenv": "~16.3.1"
   },
   "devDependencies": {
-    "@slack/cli-hooks": "^0.0.7",
+    "@slack/cli-hooks": "^0.0.12",
     "eslint": "~8.56.0",
     "eslint-config-airbnb-base": "~15.0.0",
     "eslint-plugin-import": "~2.29.1"
