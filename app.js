@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { App, LogLevel } = require('@slack/bolt');
 const { config } = require('dotenv');
 
