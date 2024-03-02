@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@slack/bolt": "3.17.1-customFunctionBeta.0",
-    "dotenv": "~16.4.1"
+    "dotenv": "~16.4.5"
   },
   "devDependencies": {
     "@slack/cli-hooks": "^1.0.0",
