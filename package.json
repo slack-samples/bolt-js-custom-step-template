@@ -22,7 +22,7 @@
     "url": "https://github.com/slack-samples/bolt-js-custom-function-template/issues"
   },
   "dependencies": {
-    "@slack/bolt": "3.17.1-customFunctionBeta.0"
+    "@slack/bolt": "3.18.0"
   },
   "devDependencies": {
     "@slack/cli-hooks": "^1.1.0",
