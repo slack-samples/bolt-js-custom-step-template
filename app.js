@@ -61,12 +61,12 @@ app.action('sample_button', async ({ body, client, complete, fail }) => {
   }
 });
 
-/** Start Bolt App */
+/** Start the Bolt App */
 (async () => {
   try {
-    await app.start(process.env.PORT || 3000);
-    console.log('⚡️ Bolt app is running! ⚡️');
+    await app.start();
+    console.log('⚡️ Bolt app is running!');
   } catch (error) {
-    console.error('Unable to start App', error);
+    console.error('Failed to start the app', error);
   }
 })();
