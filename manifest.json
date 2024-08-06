@@ -21,6 +21,11 @@
         }
     },
     "settings": {
+        "event_subscriptions": {
+            "bot_events": [
+                "function_executed"
+            ]
+        },
         "interactivity": {
             "is_enabled": true
         },
