@@ -1,4 +1,7 @@
 const { App, LogLevel } = require('@slack/bolt');
+const { config } = require('dotenv');
+
+config();
 
 /** Initialization */
 const app = new App({
