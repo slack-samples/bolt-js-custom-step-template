@@ -1,6 +1,6 @@
-# Bolt for JavaScript Custom Function Template
+# Bolt for JavaScript Custom Step Template
 
-This is a Bolt for JavaScript template app used to build custom functions for
+This is a Bolt for JavaScript template app used to build custom steps for
 use in [Workflow Builder](https://api.slack.com/start#workflow-builder).
 
 ## Setup
@@ -47,10 +47,10 @@ Before you can run the app, you'll need to store some environment variables.
 
 ```zsh
 # Clone this project onto your machine
-git clone https://github.com/slack-samples/bolt-js-custom-function-template.git
+git clone https://github.com/slack-samples/bolt-js-custom-step-template.git
 
 # Change into this project directory
-cd bolt-js-custom-function-template
+cd bolt-js-custom-step-template
 
 # Install dependencies
 npm install
@@ -69,7 +69,7 @@ npm run lint
 
 ## Using Steps in Workflow Builder
 
-With your server running, your function is now ready for use in
+With your server running, your step is now ready for use in
 [Workflow Builder](https://api.slack.com/start#workflow-builder)! Add it as a
 custom step in a new or existing workflow, then run the workflow while your app
 is running.

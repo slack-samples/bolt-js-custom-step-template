@@ -1,6 +1,6 @@
 {
     "display_information": {
-        "name": "Bolt Custom Function"
+        "name": "Bolt Custom Step"
     },
     "features": {
         "app_home": {
@@ -9,7 +9,7 @@
             "messages_tab_read_only_enabled": true
         },
         "bot_user": {
-            "display_name": "Bolt Custom Function",
+            "display_name": "Bolt Custom Step",
             "always_online": false
         }
     },
@@ -35,9 +35,9 @@
         "function_runtime": "remote"
     },
     "functions": {
-        "sample_function": {
-            "title": "Sample function",
-            "description": "Runs sample function",
+        "sample_step": {
+            "title": "Sample step",
+            "description": "Runs sample step",
             "input_parameters": {
                 "user_id": {
                     "type": "slack#/types/user_id",
@@ -52,7 +52,7 @@
                 "user_id": {
                     "type": "slack#/types/user_id",
                     "title": "User",
-                    "description": "User that completed the function",
+                    "description": "User that completed the step",
                     "is_required": true,
                     "name": "user_id"
                 }

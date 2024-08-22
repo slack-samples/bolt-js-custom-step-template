@@ -12,25 +12,25 @@ const app = new App({
 });
 
 /** Sample Function Listener */
-app.function('sample_function', async ({ client, inputs, fail }) => {
+app.function('sample_step', async ({ client, inputs, fail }) => {
   try {
     const { user_id } = inputs;
 
     await client.chat.postMessage({
       channel: user_id,
-      text: 'Click the button to signal the function has completed',
+      text: 'Click the button to signal the step has completed',
       blocks: [
         {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: 'Click the button to signal the function has completed',
+            text: 'Click the button to signal the step has completed',
           },
           accessory: {
             type: 'button',
             text: {
               type: 'plain_text',
-              text: 'Complete function',
+              text: 'Complete step',
             },
             action_id: 'sample_button',
           },
@@ -39,7 +39,7 @@ app.function('sample_function', async ({ client, inputs, fail }) => {
     });
   } catch (error) {
     console.error(error);
-    fail({ error: `Failed to handle a function request: ${error}` });
+    fail({ error: `Failed to complete the step: ${error}` });
   }
 });
 
@@ -48,7 +48,7 @@ app.action('sample_button', async ({ body, client, complete, fail }) => {
   const { channel, message, user } = body;
 
   try {
-    // Functions should be marked as successfully completed using `complete` or
+    // Steps should be marked as successfully completed using `complete` or
     // as having failed using `fail`, else they'll remain in an 'In progress' state.
     // Learn more at https://api.slack.com/automation/interactive-messages
     await complete({ outputs: { user_id: user.id } });
@@ -56,11 +56,11 @@ app.action('sample_button', async ({ body, client, complete, fail }) => {
     await client.chat.update({
       channel: channel.id,
       ts: message.ts,
-      text: 'Function completed successfully!',
+      text: 'Step completed successfully!',
     });
   } catch (error) {
     console.error(error);
-    fail({ error: `Failed to handle a function request: ${error}` });
+    fail({ error: `Failed to handle a step request: ${error}` });
   }
 });
 
