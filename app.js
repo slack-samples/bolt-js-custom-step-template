@@ -11,7 +11,7 @@ const app = new App({
   logLevel: LogLevel.DEBUG,
 });
 
-/** Sample Step Listener */
+/** Sample Function Listener */
 app.function('sample_step', async ({ client, inputs, fail }) => {
   try {
     const { user_id } = inputs;
