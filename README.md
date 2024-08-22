@@ -47,10 +47,10 @@ Before you can run the app, you'll need to store some environment variables.
 
 ```zsh
 # Clone this project onto your machine
-git clone https://github.com/slack-samples/bolt-js-custom-function-template.git
+git clone https://github.com/slack-samples/bolt-js-custom-step-template.git
 
 # Change into this project directory
-cd bolt-js-custom-function-template
+cd bolt-js-custom-step-template
 
 # Install dependencies
 npm install

@@ -1,7 +1,7 @@
 {
-  "name": "bolt-js-custom-function-template",
+  "name": "bolt-js-custom-step-template",
   "version": "1.0.0",
-  "description": "A custom function template for Slack apps",
+  "description": "A custom step template for Slack apps",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -16,10 +16,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/slack-samples/bolt-js-custom-function-template.git"
+    "url": "https://github.com/slack-samples/bolt-js-custom-step-template.git"
   },
   "bugs": {
-    "url": "https://github.com/slack-samples/bolt-js-custom-function-template/issues"
+    "url": "https://github.com/slack-samples/bolt-js-custom-step-template/issues"
   },
   "dependencies": {
     "@slack/bolt": "3.21.0",
