@@ -39,7 +39,7 @@ app.function('sample_step', async ({ client, inputs, fail }) => {
     });
   } catch (error) {
     console.error(error);
-    fail({ error: `Failed to handle a step request: ${error}` });
+    fail({ error: `Failed to complete the step: ${error}` });
   }
 });
 
