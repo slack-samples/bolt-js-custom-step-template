@@ -1,6 +1,6 @@
-# Bolt for JavaScript Custom Function Template
+# Bolt for JavaScript Custom Step Template
 
-This is a Bolt for JavaScript template app used to build custom functions for
+This is a Bolt for JavaScript template app used to build custom steps for
 use in [Workflow Builder](https://api.slack.com/start#workflow-builder).
 
 ## Setup
@@ -69,7 +69,7 @@ npm run lint
 
 ## Using Steps in Workflow Builder
 
-With your server running, your function is now ready for use in
+With your server running, your step is now ready for use in
 [Workflow Builder](https://api.slack.com/start#workflow-builder)! Add it as a
 custom step in a new or existing workflow, then run the workflow while your app
 is running.
