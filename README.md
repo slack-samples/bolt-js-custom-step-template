@@ -61,7 +61,7 @@ npm start
 
 ### Linting
 
-Run ESLint for code formatting and linting:
+Run linter for code formatting and linting:
 
 ```zsh
 npm run lint
