@@ -12,7 +12,7 @@ const app = new App({
 });
 
 /** Sample Function Listener */
-app.function('sample_step', async ({ client, inputs, fail }) => {
+app.function('sample_step', async ({ client, inputs, logger, fail }) => {
   try {
     const { user_id } = inputs;
 
@@ -38,13 +38,13 @@ app.function('sample_step', async ({ client, inputs, fail }) => {
       ],
     });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     fail({ error: `Failed to complete the step: ${error}` });
   }
 });
 
 /** Sample Action Listener */
-app.action('sample_button', async ({ body, client, complete, fail }) => {
+app.action('sample_button', async ({ body, client, logger, complete, fail }) => {
   const { channel, message, user } = body;
 
   try {
@@ -59,7 +59,7 @@ app.action('sample_button', async ({ body, client, complete, fail }) => {
       text: 'Step completed successfully!',
     });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     fail({ error: `Failed to handle a step request: ${error}` });
   }
 });
@@ -68,8 +68,8 @@ app.action('sample_button', async ({ body, client, complete, fail }) => {
 (async () => {
   try {
     await app.start();
-    console.log('⚡️ Bolt app is running!');
+    app.logger.info('⚡️ Bolt app is running!');
   } catch (error) {
-    console.error('Failed to start the app', error);
+    app.logger.error('Failed to start the app', error);
   }
 })();
