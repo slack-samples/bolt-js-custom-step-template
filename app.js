@@ -39,7 +39,7 @@ app.function('sample_step', async ({ client, inputs, logger, fail }) => {
     });
   } catch (error) {
     logger.error(error);
-    fail({ error: `Failed to complete the step: ${error}` });
+    await fail({ error: `Failed to handle a step request: ${error}` });
   }
 });
 
@@ -60,7 +60,7 @@ app.action('sample_button', async ({ body, client, logger, complete, fail }) => 
     });
   } catch (error) {
     logger.error(error);
-    fail({ error: `Failed to handle a step request: ${error}` });
+    await fail({ error: `Failed to complete the step: ${error}` });
   }
 });
 
