@@ -23,7 +23,7 @@
     "url": "https://github.com/slack-samples/bolt-js-custom-step-template/issues"
   },
   "dependencies": {
-    "@slack/bolt": "4.6.0",
+    "@slack/bolt": "4.7.2",
     "dotenv": "~17.4.2"
   },
   "devDependencies": {
