@@ -18,7 +18,41 @@ tooling, and resources created to help developers build and grow.
 
 ## Installation
 
-### Create a Slack App
+<details><summary><strong>Using Slack CLI</strong></summary>
+
+Install the latest version of the Slack CLI for your operating system:
+
+- [Slack CLI for macOS & Linux](https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-mac-and-linux/)
+- [Slack CLI for Windows](https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-windows/)
+
+You'll also need to log in if this is your first time using the Slack CLI.
+
+```sh
+slack login
+```
+
+#### Initializing the project
+
+```sh
+slack create my-bolt-js-custom-step --template slack-samples/bolt-js-custom-step-template
+cd my-bolt-js-custom-step
+```
+
+#### Creating the Slack app
+
+Use the following command to add your new Slack app to your development workspace. Choose a "local" app environment for upcoming development:
+
+```sh
+slack install
+```
+
+After the Slack app has been created you're all set to start developing!
+
+</details>
+
+<details><summary><strong>Using Terminal</strong></summary>
+
+#### Create Your Slack App
 
 1. Open [https://api.slack.com/apps/new](https://api.slack.com/apps/new) and
    choose "From an app manifest"
@@ -29,7 +63,7 @@ tooling, and resources created to help developers build and grow.
 5. Click _Install_ button and _Allow_ on the screen that follows. You'll then be
    redirected to the App Settings dashboard.
 
-### Environment Variables
+#### Environment Variables
 
 Before you can run the app, you'll need to store some environment variables.
 
@@ -43,25 +77,38 @@ Before you can run the app, you'll need to store some environment variables.
    `connections:write` scope. Copy that token into your `.env` as
    `SLACK_APP_TOKEN`.
 
-### Local Project
+#### Initializing the project
 
-```zsh
-# Clone this project onto your machine
-git clone https://github.com/slack-samples/bolt-js-custom-step-template.git
+```sh
+git clone https://github.com/slack-samples/bolt-js-custom-step-template.git my-bolt-js-custom-step
+cd my-bolt-js-custom-step
+```
 
-# Change into this project directory
-cd bolt-js-custom-step-template
+#### Install dependencies
 
-# Install dependencies
+```sh
 npm install
+```
 
-# Run Bolt server
+</details>
+
+## Development
+
+### Starting the app
+
+#### Slack CLI
+
+```sh
+slack run
+```
+
+#### Terminal
+
+```sh
 npm start
 ```
 
 ### Linting
-
-Run linter for code formatting and linting:
 
 ```zsh
 npm run lint
