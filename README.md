@@ -12,7 +12,7 @@ Join the [Slack Developer Program](https://api.slack.com/developer-program) for 
 
 ## Installation
 
-<details><summary><strong>Using Slack CLI</strong></summary>
+### Using Slack CLI
 
 Install the latest version of the Slack CLI for your operating system:
 
@@ -28,15 +28,18 @@ slack login
 #### Initializing the project
 
 ```sh
-slack create my-bolt-js-custom-step --template slack-samples/bolt-js-custom-step-template
-cd my-bolt-js-custom-step
+slack create bolt-js-custom-step --template slack-samples/bolt-js-custom-step-template
+cd bolt-js-custom-step
 ```
 
-After cloning, you're all set to start developing!
+#### Running the app
 
-</details>
+```sh
+slack run
+```
 
-<details><summary><strong>Using Terminal</strong></summary>
+<details>
+<summary><h3>Using Terminal</h3></summary>
 
 #### Create Your Slack App
 
