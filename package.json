@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "lint": "npx @biomejs/biome check .",
-    "lint:fix": "npx @biomejs/biome check --write *.js"
+    "lint:fix": "npx @biomejs/biome check --write ."
   },
   "author": "Slack Technologies, LLC",
   "license": "MIT",
