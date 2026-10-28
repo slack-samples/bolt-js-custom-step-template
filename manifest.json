@@ -15,16 +15,12 @@
   },
   "oauth_config": {
     "scopes": {
-      "bot": [
-        "chat:write"
-      ]
+      "bot": ["chat:write"]
     }
   },
   "settings": {
     "event_subscriptions": {
-      "bot_events": [
-        "function_executed"
-      ]
+      "bot_events": ["function_executed"]
     },
     "interactivity": {
       "is_enabled": true
